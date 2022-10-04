@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/8d4bb02843.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css"> 
+
+</head>
+<body class = "body-login">
+    <div class = "big-container-login">
+
+        <main class = "login-main mt-5">
+           <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+                <div class = "login-big-container mt-4">
+                    <h5 class = "mb-4">SIGN IN</h5>
+                    <div class = "login-container">
+                        <div class = "campo1-login form-group col-md-8">
+                            <!-- <i class="fa-solid fa-user"></i> -->
+                            <input type="text" name = "user" placeholder = "Your username" class = "input-general">
+                        </div>
+                    
+                        <div class = "campo2-login form-group col-md-8">
+                            <!-- <i class="fa-sharp fa-solid fa-lock"></i> -->
+                            <input type="password" name = "PASS" placeholder = "Your password" class = "input-general">
+                        </div>
+                    </div>
+                    <button type="submit" th:href = "@{/list}" target = "_blank"  class="btn-login btn-enviar-login">LOG IN</button>
+
+                    <div class = "recordar-pass"> 
+                        <input type = "checkbox" name = "remember" class = "check-rec">
+                        <h4>Remember password</h4>
+                    </div>
+
+                    <div class = "new-here">
+                        <h4>New here?</h4>
+                        <button type="submit" class="btn-login btn-crear-cuenta">SIGN UP</button>
+                    </div>
+
+                    <div class = "fgt-pass">
+                        <a href = "#">forgot your password?</a>
+                    </div>
+                </div>
+           </form>
+        </main>
+    </div>
+</body>
+</html>

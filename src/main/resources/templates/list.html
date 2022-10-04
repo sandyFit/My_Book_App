@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Books List</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+        <script src="https://kit.fontawesome.com/8d4bb02843.js" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/styles.css"> 
+        
+    </head>
+
+    <body>
+        <!-- Barra lateral -->
+        <div class="wrapper">
+            <div class="sidebar">
+                <h2>Dashboard</h2>
+                <ul>
+                    <li><a href = "#"><i class="fa-solid fa-user"></i>Users</a></li>
+                    <li><a href = "#"><i class="fa-solid fa-book"></i>Books</a></li>
+                    <form th:action="@{/logout}" method="post">
+                        <li><a href = "/"><i class="fa-solid fa-right-to-bracket"></i>Logout</a></li>
+                    </form>
+                </ul> 
+            </div>
+            <!-- Final de la barra lateral -->
+
+            <!-- Contenedor Central -->
+            <div class="central_container">
+                <!-- Encabezado -->
+                <header class="dash-header">
+                    <!-- Barra de Búsqueda -->
+                    <nav class="navbar navbar-light bg-light">
+                        <div class="container-fluid">
+                            <form class="d-flex">                            
+                                <input type="search" class="form-control me-2"  placeholder="Search book..."
+                                    aria-label="Search" aria-describedby="basic-addon2">
+                                
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>                        
+                            </form>
+                        </div>
+                    </nav>
+                    <!-- Final de la Barra de Búsqueda -->
+
+                    <!-- Nav Item - Rol del usuario -->
+                    <div class = "role">
+                        <a href = "#"><i class="fa-regular fa-user"></i><span>ADMIN</span></a>
+                    </div>
+                </header>  
+                <!-- Final del encabezado -->
+                
+                <!-- Contenido dinámico -->
+                <main class="main-container">
+                    
+                    <!--Inicio de la tabla-->
+                    <div class="container my-2">
+                        <div class="card mt-3">
+                            <div class="card-body mt-12 form-pos">
+                                <div th:switch="${books}" class="container my-5">
+                                    <p class="my-5">
+                                        <a href="/add" class="btn btn-primary">
+                                        <i class="fa-solid fa-plus"> Add a Book </i></a>
+                                    </p>
+                                    <div class="col-md-10">
+                                        <h2 th:case="null">No record found !!</h2>
+                                        <div th:case="*">
+                                            <table class="table table-bordered table-responsive-md">
+                                                <thead>
+                                                    <tr class = "table-secondary">
+                                                        <th>Name</th>
+                                                        <th>Author</th>
+                                                        <th>Description</th>
+                                                        <th>Pages</th>
+                                                        <th>Rating</th>
+                                                        <th>Edit</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr th:each="book : ${books}">
+                                                        <td th:text="${book.name}"></td>
+                                                        <td th:text="${book.author}"></td>
+                                                        <td th:text="${book.description}"></td>
+                                                        <td th:text="${book.pages}"></td>
+                                                        <td th:text="${book.rating}"></td>
+                                                        
+                                                        <td>
+                                                            <a th:href="@{/edit/{id}(id=${book.id})}"
+                                                                    class="btn btn-warning yeah">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a th:href="@{/delete/{id}(id=${book.id})}"
+                                                                    class="btn btn-danger ididit">
+                                                                X
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                    
+            </div>
+        </div>
+    </body>
+</html>
+
