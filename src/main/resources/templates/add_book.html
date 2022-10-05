@@ -10,8 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
         <script src="https://kit.fontawesome.com/8d4bb02843.js" crossorigin="anonymous"></script>
         
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/css/styles.css"> 
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/styles.css"> 
         
     </head>
 
@@ -23,7 +23,9 @@
                 <ul>
                     <li><a href = "#"><i class="fa-solid fa-user"></i>Users</a></li>
                     <li><a href = "#"><i class="fa-solid fa-book"></i>Books</a></li>
-                    <li><a href = "#"><i class="fa-solid fa-right-to-bracket"></i>Logout</a></li>
+                    <form th:action="@{/logout}" method="post">
+                        <li><a href = "/"><i class="fa-solid fa-right-to-bracket"></i>Logout</a></li>
+                    </form>
                 </ul> 
             </div>
             <!-- Final de la barra lateral -->
@@ -55,7 +57,7 @@
                 <!-- Final del encabezado -->
                 
                 <!-- Contenido dinámico -->
-                <main class="main-container mt-6">
+                <main class="container mt-6">
                     <div class = "container">
                         <div class="row mt-4">
                             <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -66,30 +68,30 @@
                                                                                     
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label for="name" class="col-form-label">Book</label> 
-                                                <input type="text" th:field="*{name}" class="form-control"
-                                                            id="bookName" placeholder="Enter Book Name" />
+                                                <label for="name" class="col-form-label">Title</label> 
+                                                <input type="text" th:field="*{title}" class="form-control"
+                                                            id="bookName"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="name" class="col-form-label">Author</label> 
                                                 <input type="text" th:field="*{author}" class="form-control"
-                                                            id="authorName" placeholder="Enter Author" />
+                                                            id="authorName"/>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="email" class="col-form-label">Description</label> 
                                                 <input type="text" th:field="*{description}" class="form-control"
-                                                            id="description" placeholder="Enter Description" />
+                                                            id="description"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="col-form-label">Pages</label> 
                                                 <input type="text" th:field="*{pages}" class="form-control"
-                                                            id="pages" placeholder="Number Of Pages" />
+                                                            id="pages"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="col-form-label">Rating</label> 
                                                 <input type="number" th:field="*{rating}" class="form-control"
-                                                            id="rating" placeholder="Rate from 1-5" />
+                                                            id="rating" />
                                             </div>
                 
                                             <div class="box-footer mt-4">

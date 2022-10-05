@@ -1,5 +1,7 @@
 package com.co.my_book_app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,35 +18,31 @@ public class BookContoller {
     @Autowired
     BookService service;
 
-    @GetMapping("/")
-    public String home() {
-        return "index";
-
-    }
     
     
-
     @GetMapping("/list")
-    public String findAll(Model model) {
-        model.addAttribute("books", service.listAllBooks());
+    public String findAllMyBooks(Model model) {
+        List<Book> books = service.listAllBooks();
+        model.addAttribute("books", books);
+        
         return "list";
     }
 
     @GetMapping("/add")
-    public String lunchAddBookPage(Model model) {
+    public String showAddBookPage(Model model) {
         model.addAttribute("book", new Book());
         return "add_book";
     }
 
     @PostMapping("/addbook")
-    public String registerBook(Book book) {
+    public String registerMyBook(Book book) {
         service.addBook(book);
         return "redirect:/list";
 
     }
 
     @GetMapping("/edit/{id}")
-    public String EditBook(Model model, @PathVariable("id") int id) {
+    public String EditMyBook(Model model, @PathVariable("id") int id) {
         model.addAttribute("book", service.findBook(id));
         return "edit_book";
 

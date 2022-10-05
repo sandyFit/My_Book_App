@@ -10,8 +10,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
         <script src="https://kit.fontawesome.com/8d4bb02843.js" crossorigin="anonymous"></script>
         
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/css/styles.css"> 
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/styles.css"> 
         
     </head>
 
@@ -37,9 +37,9 @@
                     <!-- Barra de Búsqueda -->
                     <nav class="navbar navbar-light bg-light">
                         <div class="container-fluid">
-                            <form class="d-flex">                            
-                                <input type="search" class="form-control me-2"  placeholder="Search book..."
-                                    aria-label="Search" aria-describedby="basic-addon2">
+                            <form class="d-flex" >                            
+                                <input type="search" name = "keyword" class="form-control me-2"  placeholder="Search book..."
+                                    aria-label="Search" aria-describedby="basic-addon2" th:value = "${keyword}">
                                 
                                     <button class="btn btn-info" type="submit">
                                         <i class="fas fa-search fa-sm"></i>
@@ -74,7 +74,7 @@
                                             <table class="table table-bordered table-responsive-md">
                                                 <thead>
                                                     <tr class = "table-secondary">
-                                                        <th>Name</th>
+                                                        <th>Title</th>
                                                         <th>Author</th>
                                                         <th>Description</th>
                                                         <th>Pages</th>
@@ -85,7 +85,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr th:each="book : ${books}">
-                                                        <td th:text="${book.name}"></td>
+                                                        <td th:text="${book.title}"></td>
                                                         <td th:text="${book.author}"></td>
                                                         <td th:text="${book.description}"></td>
                                                         <td th:text="${book.pages}"></td>

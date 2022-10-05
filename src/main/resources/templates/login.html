@@ -10,46 +10,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/8d4bb02843.js" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/styles.css"> 
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css"> 
 
 </head>
 <body class = "body-login">
     <div class = "big-container-login">
 
-        <main class = "login-main mt-5">
-           <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-                <div class = "login-big-container mt-4">
-                    <h5 class = "mb-4">SIGN IN</h5>
-                    <div class = "login-container">
+        <main class = "login-main">
+            
+            <div class = "login-big-container">
+                <form th:action="@{/login}" method="post">
+                    <div class = "login-titulo">
+                        <h4 class = "text-center">SIGN IN</h4>
+                    </div> 
+                    <div class = "login-container mt-4">
                         <div class = "campo1-login form-group col-md-8">
-                            <!-- <i class="fa-solid fa-user"></i> -->
+                            
                             <input type="text" name = "user" placeholder = "Your username" class = "input-general">
                         </div>
                     
                         <div class = "campo2-login form-group col-md-8">
-                            <!-- <i class="fa-sharp fa-solid fa-lock"></i> -->
+                            
                             <input type="password" name = "PASS" placeholder = "Your password" class = "input-general">
                         </div>
                     </div>
-                    <button type="submit" th:href = "@{/list}" target = "_blank"  class="btn-login btn-enviar-login">LOG IN</button>
+                    <div class = middle-area>
+                        <a href = "/list" class="btn-login btn-enviar-login">LOG IN</a>
 
-                    <div class = "recordar-pass"> 
-                        <input type = "checkbox" name = "remember" class = "check-rec">
-                        <h4>Remember password</h4>
+                        <div class = "recordar-pass"> 
+                            <input type = "checkbox" name = "remember" class = "check-rec">
+                            <h4>Remember me</h4>
+                        </div>
                     </div>
+                    <hr>
+                    <div class = card-footer>
+                        
+                        <div class = "new-here">
+                            <h4>New here?</h4>
+                            <a th:href = "@{/user_reg}" class="btn-login btn-crear-cuenta">SIGN UP</a>
+                        </div>
 
-                    <div class = "new-here">
-                        <h4>New here?</h4>
-                        <button type="submit" class="btn-login btn-crear-cuenta">SIGN UP</button>
+                        <div class = "fgt-pass my-3">
+                            <a>forgot your password?</a>
+                        </div>
                     </div>
-
-                    <div class = "fgt-pass">
-                        <a href = "#">forgot your password?</a>
-                    </div>
-                </div>
-           </form>
+                </form>
+            </div>
         </main>
     </div>
-</body>
+
+    <script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "list.html";
+    };
+    </script>
+    </body>
 </html>

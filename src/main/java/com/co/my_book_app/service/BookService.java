@@ -36,7 +36,7 @@ public class BookService {
     public Book updateBook(Book book) {
         Optional<Book> result = repo.findById(book.getId());
         Book b = result.get();
-        b.setName(book.getName());
+        b.setTitle(book.getTitle());
         b.setAuthor(book.getAuthor());
         b.setDescription(book.getDescription());
         b.setPages(book.getPages());
